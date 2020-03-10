@@ -30,4 +30,16 @@ public class CompositeNode extends Node implements ICompositeNode {
 
         return result;
     }
+
+    @Override
+    public INode findByCode(String code) {
+
+        for (INode node : nodes) {
+            INode result = node.findByCode(code);
+            if (result != null) {
+                return result;
+            }
+        }
+        return super.findByCode(code);
+    }
 }
