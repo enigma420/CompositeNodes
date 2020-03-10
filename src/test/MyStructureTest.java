@@ -33,8 +33,11 @@ public class MyStructureTest {
     - emptyStruct is empty but necessary for testing:
     1. notNullValue of created instance
     2. Return 0 when use method count()
+    - filledStruct is fill with nested nodes which show up in next part of test class.
+    1. findBy(Code or Renderer) nodes,composite_nodes,nested nodes,nested composite_nodes,multiple nested nodes,multiple nested composite_nodes with null or properly code/renderer
+    2. Report exception when pass null as code or renderer during findBy(Code/Renderer)
+    3. Return properly count of single composite_node and the whole structure
     */
-
     private MyStructure emptyStruct = new MyStructure();
     private MyStructure filledStruct;
 
@@ -111,4 +114,102 @@ public class MyStructureTest {
         assertThat(emptyStruct.count(), is(equalTo(0)));
     }
 
+    @Test
+    void shouldReturnNullWhenNotFoundByCode() {
+        assertThat(filledStruct.findByCode("SOME_CODE"), is(nullValue()));
+    }
+
+    @Test
+    void shouldReturnNullWhenNotFoundByRenderer() {
+        assertThat(filledStruct.findByRenderer("SOME_RENDERER"), is(nullValue()));
+    }
+
+    @Test
+    void shouldReturnNodeWhenFoundByCode() {
+        assertThat(filledStruct.findByCode("third_code"), is(THIRD_NODE));
+    }
+
+    @Test
+    void shouldReturnNodeWhenFoundByRenderer() {
+        assertThat(filledStruct.findByRenderer("first_renderer"), is(FIRST_NODE));
+    }
+
+    @Test
+    void shouldReportIllegalArgumentExceptionWhenPassNullAsCode() {
+        assertThrows(IllegalArgumentException.class, () -> filledStruct.findByCode(null));
+    }
+
+    @Test
+    void shouldReportIllegalArgumentExceptionWhenPassNullAsRenderer() {
+        assertThrows(IllegalArgumentException.class, () -> filledStruct.findByRenderer(null));
+    }
+
+    @Test
+    void shouldFindCompositeNodeByCode() {
+        assertThat(filledStruct.findByCode("second_composite_code"), is(SECOND_COMPOSITE_NODE));
+    }
+
+    @Test
+    void shouldFindCompositeNodeByRenderer() {
+        assertThat(filledStruct.findByRenderer("second_composite_renderer"), is(SECOND_COMPOSITE_NODE));
+    }
+
+    @Test
+    void shouldFindNestedCompositeNodeByCode() {
+        assertThat(filledStruct.findByCode("first_composite_code"), is(FIRST_COMPOSITE_NODE));
+    }
+
+    @Test
+    void shouldFindNestedCompositeNodeByRenderer() {
+        assertThat(filledStruct.findByRenderer("first_composite_renderer"), is(FIRST_COMPOSITE_NODE));
+    }
+
+    @Test
+    void shouldFindMultipleNestedCompositeNodeByCode() {
+        assertThat(filledStruct.findByCode("third_composite_code"), is(THIRD_COMPOSITE_NODE));
+    }
+
+    @Test
+    void shouldFindMultipleNestedCompositeNodeByRenderer() {
+        assertThat(filledStruct.findByRenderer("third_composite_renderer"), is(THIRD_COMPOSITE_NODE));
+    }
+
+    @Test
+    void shouldReturnEmptyListWhenGetNodesFromEmptyCompositeNode(){
+        assertThat(FOURTH_COMPOSITE_NODE.getNodes(), is(empty()));
+    }
+
+    @Test
+    void shouldFindNestedNodeByCode() {
+        assertThat(filledStruct.findByCode("third_code"), is(THIRD_NODE));
+    }
+
+    @Test
+    void shouldFindNestedNodeByRenderer() {
+        assertThat(filledStruct.findByRenderer("third_renderer"), is(THIRD_NODE));
+    }
+
+    @Test
+    void shouldFindMultipleNestedNodeByCode() {
+        assertThat(filledStruct.findByCode("fifth_code"), is(FIFTH_NODE));
+    }
+
+    @Test
+    void shouldFindMultipleNestedNodeByRenderer() {
+        assertThat(filledStruct.findByRenderer("fourth_renderer"), is(FOURTH_NODE));
+    }
+
+    @Test
+    void shouldProperlyCountMultipleNestedStructure() {
+        assertThat(filledStruct.count(), is(10));
+    }
+
+    //In the next case we must substract 1 because we dont count CompositeNode
+    @Test
+    void shouldProperlyCountNodesLocatedInCompositeNodeWhichOnlyHaveNodes() {
+        assertThat(THIRD_COMPOSITE_NODE.count() - 1, is(1));
+    }
+
+
 }
+
