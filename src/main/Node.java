@@ -34,6 +34,9 @@ public class Node implements INode {
 
     @Override
     public INode findByCode(String code) {
+        if (this.code.equals(code)) {
+            return this;
+        }
         return null;
     }
 }

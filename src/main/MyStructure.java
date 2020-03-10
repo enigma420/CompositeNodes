@@ -13,6 +13,16 @@ public class MyStructure implements IMyStructure {
 
     @Override
     public INode findByCode(String code) {
+        if (code == null) {
+            throw new IllegalArgumentException("Cannot find node => Code is null");
+        }
+        for (INode node : nodes) {
+            INode result = node.findByCode(code);
+            if (result != null) {
+                return result;
+            }
+        }
+
         return null;
     }
 
