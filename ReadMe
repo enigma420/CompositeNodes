@@ -1,0 +1,38 @@
+
+! Recruitment Task from Horus company !
+
+To solve the task it was necessary to implement:
+* two finder methods: findByCode(String code) and findyByRenderer(String renderer) which enable to find node by code or renderer
+* count method: count() which returns the number of nodes
+
+Moreover we had to complete CompositeNode and Node classes.
+
+Information about project:
+
+At first Composite pattern was used in this project.
+
+We can add into structure nodes and composite nodes. Composite nodes may have nested nodes or comoposite nodes.
+
+An example that explains everything is shown below:
+
+    Structure
+    |
+    |
+    --FIRST_NODE
+    |
+    --SECOND_NODE
+    |
+    ----SECOND_COMPOSITE_NODE------FIRST_COMPOSITE_NODE------THIRD_COMPOSITE_NODE
+    |              |                         |                         |
+    |          THIRD_NODE                FOURTH_NODE               SIXTH_NODE
+    |                                        |
+    |                                    FIFTH_NODE
+    |
+    ----FOURTH_COMPOSITE_NODE
+    |
+    |
+    end
+
+To solve finder and counter tasks we need to check node by node and check if we don't have composite node. In this case we are going down and check what's in it and again and again...
+
+At the end, tests checking the program operation in various cases have been implemented
