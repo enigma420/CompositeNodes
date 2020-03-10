@@ -1,5 +1,7 @@
 package main;
 
+import java.util.stream.Stream;
+
 public class Node implements INode {
 
     private final String code;
@@ -22,7 +24,7 @@ public class Node implements INode {
 
     @Override
     public int count() {
-        return 0;
+        return (int) Stream.of(this).count();
     }
 
     @Override

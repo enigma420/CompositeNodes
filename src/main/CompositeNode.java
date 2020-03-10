@@ -18,4 +18,16 @@ public class CompositeNode extends Node implements ICompositeNode {
     public List<INode> getNodes() {
         return nodes;
     }
+
+    @Override
+    public int count() {
+        int result = 0;
+
+        for (INode node : nodes) {
+            result += node.count();
+        }
+        result += super.count();
+
+        return result;
+    }
 }

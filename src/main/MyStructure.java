@@ -23,6 +23,14 @@ public class MyStructure implements IMyStructure {
 
     @Override
     public int count() {
-        return 0;
+        int result = 0;
+        if (!nodes.isEmpty()) {
+            for (INode node : nodes) {
+                if (node != null) {
+                    result += node.count();
+                }
+            }
+        }
+        return result;
     }
 }
