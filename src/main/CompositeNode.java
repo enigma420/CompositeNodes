@@ -40,6 +40,20 @@ public class CompositeNode extends Node implements ICompositeNode {
                 return result;
             }
         }
+
         return super.findByCode(code);
+    }
+
+    @Override
+    public INode findByRenderer(String renderer) {
+
+        for (INode node : nodes) {
+            INode result = node.findByRenderer(renderer);
+            if (result != null) {
+                return result;
+            }
+        }
+
+        return super.findByRenderer(renderer);
     }
 }

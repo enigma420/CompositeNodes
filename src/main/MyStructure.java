@@ -28,6 +28,16 @@ public class MyStructure implements IMyStructure {
 
     @Override
     public INode findByRenderer(String renderer) {
+        if (renderer == null) {
+            throw new IllegalArgumentException("Cannot find node => Renderer is null");
+        }
+        for (INode node : nodes) {
+            INode result = node.findByRenderer(renderer);
+            if (result != null) {
+                return result;
+            }
+        }
+
         return null;
     }
 
@@ -41,6 +51,8 @@ public class MyStructure implements IMyStructure {
                 }
             }
         }
+
         return result;
     }
+
 }
