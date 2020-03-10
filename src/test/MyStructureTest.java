@@ -53,7 +53,7 @@ public class MyStructureTest {
 
     }
 
-    /*B efore each test we must to add nodes/composite_nodes into filledStruct */
+    /* Before each test we must to add nodes/composite_nodes into filledStruct */
     @BeforeEach
     void addNodesAndCompositeNodesIntoStruct() {
         filledStruct = new MyStructure();
@@ -175,7 +175,7 @@ public class MyStructureTest {
     }
 
     @Test
-    void shouldReturnEmptyListWhenGetNodesFromEmptyCompositeNode(){
+    void shouldReturnEmptyListWhenGetNodesFromEmptyCompositeNode() {
         assertThat(FOURTH_COMPOSITE_NODE.getNodes(), is(empty()));
     }
 
@@ -204,7 +204,7 @@ public class MyStructureTest {
         assertThat(filledStruct.count(), is(10));
     }
 
-    //In the next case we must substract 1 because we dont count CompositeNode
+    /* In the next case we must substract 1 because we dont count CompositeNode */
     @Test
     void shouldProperlyCountNodesLocatedInCompositeNodeWhichOnlyHaveNodes() {
         assertThat(THIRD_COMPOSITE_NODE.count() - 1, is(1));

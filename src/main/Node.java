@@ -29,6 +29,10 @@ public class Node implements INode {
 
     @Override
     public INode findByRenderer(String renderer) {
+        if (this.renderer.equals(renderer)) {
+            return this;
+        }
+
         return null;
     }
 
@@ -37,6 +41,8 @@ public class Node implements INode {
         if (this.code.equals(code)) {
             return this;
         }
+
         return null;
     }
+
 }
