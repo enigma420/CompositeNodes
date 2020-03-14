@@ -19,41 +19,4 @@ public class CompositeNode extends Node implements ICompositeNode {
         return nodes;
     }
 
-    @Override
-    public int count() {
-        int result = 0;
-
-        for (INode node : nodes) {
-            result += node.count();
-        }
-        result += super.count();
-
-        return result;
-    }
-
-    @Override
-    public INode findByCode(String code) {
-
-        for (INode node : nodes) {
-            INode result = node.findByCode(code);
-            if (result != null) {
-                return result;
-            }
-        }
-
-        return super.findByCode(code);
-    }
-
-    @Override
-    public INode findByRenderer(String renderer) {
-
-        for (INode node : nodes) {
-            INode result = node.findByRenderer(renderer);
-            if (result != null) {
-                return result;
-            }
-        }
-
-        return super.findByRenderer(renderer);
-    }
 }

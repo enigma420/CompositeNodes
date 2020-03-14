@@ -1,7 +1,5 @@
 package main;
 
-import java.util.stream.Stream;
-
 public class Node implements INode {
 
     private final String code;
@@ -20,29 +18,6 @@ public class Node implements INode {
     @Override
     public String getRenderer() {
         return renderer;
-    }
-
-    @Override
-    public int count() {
-        return (int) Stream.of(this).count();
-    }
-
-    @Override
-    public INode findByRenderer(String renderer) {
-        if (this.renderer.equals(renderer)) {
-            return this;
-        }
-
-        return null;
-    }
-
-    @Override
-    public INode findByCode(String code) {
-        if (this.code.equals(code)) {
-            return this;
-        }
-
-        return null;
     }
 
 }
