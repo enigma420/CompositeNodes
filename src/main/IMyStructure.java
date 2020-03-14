@@ -11,5 +11,4 @@ public interface IMyStructure {
     // returns the number of nodes
     int count();
 
-
 }

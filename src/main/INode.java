@@ -7,10 +7,4 @@ interface INode {
 
     String getRenderer();
 
-    int count();
-
-    INode findByRenderer(String renderer);
-
-    INode findByCode(String code);
-
 }

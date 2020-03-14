@@ -200,16 +200,7 @@ public class MyStructureTest {
     }
 
     @Test
-    void shouldProperlyCountMultipleNestedStructure() {
-        assertThat(filledStruct.count(), is(10));
-    }
-
-    /* In the next case we must substract 1 because we dont count CompositeNode */
-    @Test
-    void shouldProperlyCountNodesLocatedInCompositeNodeWhichOnlyHaveNodes() {
-        assertThat(THIRD_COMPOSITE_NODE.count() - 1, is(1));
-    }
-
+    void shouldProperlyCountMultipleNestedStructure() { assertThat(filledStruct.count(), is(10)); }
 
 }
 
